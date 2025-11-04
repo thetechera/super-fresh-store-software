@@ -1,8 +1,10 @@
 import { createPool } from '@vercel/postgres';
 
-// By default, the createPool function will use the Vercel-provided
-// environment variables. This is the most robust way to connect.
-// https://vercel.com/docs/storage/vercel-postgres/sdk#createpool
-const pool = createPool();
+// By passing the connectionString explicitly, we remove any ambiguity
+// caused by multiple database environment variables in the Vercel project.
+// This ensures the app connects to the intended database.
+const pool = createPool({
+    connectionString: process.env.POSTGRES_URL,
+});
 
 export const sql = pool.sql;
