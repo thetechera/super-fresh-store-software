@@ -1,9 +1,9 @@
 import { sql } from '../db.js';
-import { NextApiResponse, NextApiRequest } from 'next';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(
-  request: NextApiRequest,
-  response: NextApiResponse,
+  request: VercelRequest,
+  response: VercelResponse,
 ) {
   const { id } = request.query;
 
@@ -27,7 +27,8 @@ export default async function handler(
     try {
       await sql`DELETE FROM sales WHERE id = ${id};`;
       return response.status(200).json({ message: 'Sale deleted successfully' });
-    } catch (error) {
+    } catch (error)
+      {
       return response.status(500).json({ error: (error as Error).message });
     }
   } else {
