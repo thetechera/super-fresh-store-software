@@ -1,9 +1,9 @@
 import { sql } from '../db.js';
-import { NextApiResponse, NextApiRequest } from 'next';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(
-  request: NextApiRequest,
-  response: NextApiResponse,
+  request: VercelRequest,
+  response: VercelResponse,
 ) {
   try {
     const { rows } = await sql`
