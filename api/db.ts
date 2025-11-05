@@ -1,4 +1,5 @@
 import { createPool } from '@vercel/postgres';
+require('dotenv').config();
 
 // By explicitly passing the connectionString from process.env.POSTGRES_URL,
 // we instruct the application to connect to the specific external Neon database
