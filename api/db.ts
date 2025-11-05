@@ -5,6 +5,7 @@ import { createPool } from '@vercel/postgres';
 // defined in the Vercel project's environment variables. This is the correct
 // and necessary approach for non-Vercel databases.
 const pool = createPool({
+  console.log("-=-=-=-=-=-=-=",process.env.POSTGRES_URL);
   connectionString: process.env.POSTGRES_URL,
 });
 
